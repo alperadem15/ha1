@@ -24,6 +24,12 @@ application {
     mainClass = 'htw.berlin.prog2.ha1.App'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21) // Use Java 21
+    }
+}
+
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
