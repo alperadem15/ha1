@@ -88,6 +88,24 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("should display error after dividing positive number with a zero")
+    void testZeroDivision(){
+        Calculator calc = new Calculator();
+
+        
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(0);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
     @DisplayName("should display result after dividing positive multi-digit numbers")
     void testPositiveDivision(){
         Calculator calc = new Calculator();
@@ -103,6 +121,23 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
+
+    }
+
+    @Test
+    @DisplayName("should display 0. if user presses dot key first")
+    void testFirstDot(){
+        Calculator calc = new Calculator();
+
+        calc.pressClearKey();
+        calc.pressDotKey();
+        calc.pressDigitKey(5);
+
+        String expected = "0.5";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
     }
     
 }

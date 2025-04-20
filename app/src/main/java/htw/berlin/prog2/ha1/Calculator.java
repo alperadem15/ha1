@@ -35,6 +35,7 @@ public class Calculator {
 
         screen = screen + digit;
     }
+    
 
     /**
      * Empfängt den Befehl der C- bzw. CE-Taste (Clear bzw. Clear Entry).
@@ -94,7 +95,13 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.contains(".")) screen = screen + ".";
+        if(!screen.contains(".")){
+            if(screen.equals("0")){
+                screen = "0.";
+            }else{
+                screen += ".";
+            }
+        }
     }
 
     /**
